@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Cat Oracle</title>
+  </head>
+
+  <body>
+    <h1>Cat Oracle</h1>
+
+
+    <p>  How can I assist you, <br> hu-man? </p>
+    <p id="answerContainer"></p>
+    <input id="question" type="text" name="question">
+    <input id="meowbutton" class="button"  type="submit" value="meow?">
+    <p id="response"></p>
+    <script type="text/javascript">
+      function whenTheServerResponds(data) {
+        $("#response").text(data);
+        $("#question").val("")
+
+      }
+
+      function getCatWisdom() {
+        $.get("/response").then(whenTheServerResponds);
+        console.log('2');
+      }
+
+      $('#meowbutton').on('click', getCatWisdom);
+    </script>
+
+
+  </body>
+</html>
